@@ -14,12 +14,11 @@
 * currentSession.saveOrUpdate(addressBook); currentSession.save(addressBook); 
 * return (SkinHelpDesk) sessionFactory.getCurrentSession().createQuery("from skinhelpdesk where patientid = " + patientId).uniqueResult();
 * //return (SkinHelpDesk) sessionFactory.getCurrentSession().get(SkinHelpDesk.class, patientId);
-
+* List<addressbook> list = currentSession.createCriteria(AddressBook.class).add(Restrictions.eq("name", name)).list();  
 
 
 ## ToDo
 * Link from Admin page
-* Constants
 * Data Model
 
 
@@ -29,3 +28,5 @@
 * Updated Liquibase Ex: /api/src/main/resources/liquibase.xml
 * Updated SkinHelpDeskDAO (Interface) Ex: /api/src/main/java.../api/db/SkinHelpDeskDAO.java
 * Updated HibernateSkinHelpDeskDAO (Implementation) Ex: /api/src/main/java.../api/db/hibernate/HibernateSkinHelpDeskDAO.java
+* Update SkinHelpDeskService (Interface) Ex: /api/src/main/java.../api/db/SkinHelpDeskService.java 
+* Update SkinHelpDeskServiceImpl (Implementation) Ex: /api/src/main/java.../api/db/impl/SkinHelpDeskServiceImpl.java 

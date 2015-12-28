@@ -12,6 +12,7 @@ package org.openmrs.module.skinhelpdesk.api.impl;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.module.skinhelpdesk.SkinHelpDesk;
 import org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService;
 import org.openmrs.module.skinhelpdesk.api.db.SkinHelpDeskDAO;
 
@@ -36,5 +37,28 @@ public class SkinHelpDeskServiceImpl extends BaseOpenmrsService implements SkinH
      */
     public SkinHelpDeskDAO getDao() {
 	    return dao;
+    }
+
+
+    /**
+     * @see org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService#getLesionmap(java.lang.Integer)
+     */
+    @Override
+    public SkinHelpDesk getLesionmap(Integer patientId) {
+        return dao.getLesionmap(patientId);
+    }
+    /**
+     * @see org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService#saveLesionmap(org.openmrs.module.skinhelpdesk.SkinHelpDesk)
+     */
+    @Override
+    public SkinHelpDesk saveLesionmap(SkinHelpDesk lesionmap) {
+        return dao.saveLesionmap(lesionmap);
+    }
+    /**
+     * @see org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService#purgeLesionmap(org.openmrs.module.skinhelpdesk.SkinHelpDesk)
+     */
+    @Override
+    public void purgeLesionmap(SkinHelpDesk lesionmap) {
+        dao.purgeLesionmap(lesionmap);
     }
 }

@@ -18,6 +18,7 @@ import org.openmrs.module.skinhelpdesk.api.db.SkinHelpDeskDAO;
 /**
  * It is a default implementation of  {@link SkinHelpDeskDAO}.
  */
+
 public class HibernateSkinHelpDeskDAO implements SkinHelpDeskDAO {
 	protected final Log log = LogFactory.getLog(this.getClass());
 	
@@ -42,14 +43,16 @@ public class HibernateSkinHelpDeskDAO implements SkinHelpDeskDAO {
 	 */
 	@Override
 	public SkinHelpDesk getLesionmap(Integer patientId) {
-		return (SkinHelpDesk) sessionFactory.getCurrentSession().get(SkinHelpDesk.class, patientId);
-	}
+		//return (SkinHelpDesk) sessionFactory.getCurrentSession().get(SkinHelpDesk.class, patientId);
+        return (SkinHelpDesk) sessionFactory.getCurrentSession().createQuery("from skinhelpdesk where patientid = " + patientId).uniqueResult();
+
+    }
 	/**
 	 * @see org.openmrs.module.skinhelpdesk.api.db.SkinHelpDeskDAO#saveLesionmap(org.openmrs.module.skinhelpdesk.SkinHelpDesk)
 	 */
 	@Override
 	public SkinHelpDesk saveLesionmap(SkinHelpDesk lesionmap) {
-		sessionFactory.getCurrentSession().save(lesionmap);
+		sessionFactory.getCurrentSession().saveOrUpdate(lesionmap);
 		return lesionmap;
 	}
 	/**

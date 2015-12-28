@@ -11,11 +11,12 @@ package org.openmrs.module.skinhelpdesk.api.db;
 
 import org.openmrs.module.skinhelpdesk.SkinHelpDesk;
 import org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService;
+import org.springframework.stereotype.Repository;
 
 /**
  *  Database methods for {@link SkinHelpDeskService}.
  */
-
+@Repository
 public interface SkinHelpDeskDAO {
 	
 	/*
