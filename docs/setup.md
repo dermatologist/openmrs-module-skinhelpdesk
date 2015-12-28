@@ -13,4 +13,9 @@
 * <img alt="" id="patientimg" src="${pageContext.request.contextPath}/moduleResources/patientimage/images/${patient.gender}.png" />
 
 
+## ToDo
+* Link from Admin page
+* Constants
+* Data Model
+
 

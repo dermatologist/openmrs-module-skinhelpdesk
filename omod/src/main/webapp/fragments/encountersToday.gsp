@@ -1,3 +1,4 @@
+<!-- Example File. To be deleted -->
 <table>
 <tr>
 <th>${ ui.message("Encounter.type") }</th>

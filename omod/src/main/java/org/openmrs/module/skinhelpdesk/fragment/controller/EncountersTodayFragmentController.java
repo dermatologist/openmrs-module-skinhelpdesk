@@ -8,6 +8,7 @@ import org.openmrs.ui.framework.annotation.FragmentParam;
 import org.openmrs.ui.framework.fragment.FragmentModel;
 /**
  * Created by beapen on 27/12/15.
+ * Example File. To be deleted later.
  */
 public class EncountersTodayFragmentController {
 
