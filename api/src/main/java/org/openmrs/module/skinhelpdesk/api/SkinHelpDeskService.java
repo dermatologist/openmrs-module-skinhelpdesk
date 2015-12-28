@@ -9,6 +9,7 @@
  */
 package org.openmrs.module.skinhelpdesk.api;
 
+import org.openmrs.Patient;
 import org.openmrs.api.OpenmrsService;
 import org.openmrs.module.skinhelpdesk.SkinHelpDesk;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,11 +36,11 @@ public interface SkinHelpDeskService extends OpenmrsService {
     /**
      * Gets a lesionmap for a given id.
      *
-     * @param patientId the patient id
+     * @param patient
      * @return the lesionmap with the given id
      */
     @Transactional(readOnly = true)
-    SkinHelpDesk getLesionmap(Integer patientId);
+    SkinHelpDesk getLesionmap(Patient patient);
     /**
      * Saves a new or existing lesionmap.
      *

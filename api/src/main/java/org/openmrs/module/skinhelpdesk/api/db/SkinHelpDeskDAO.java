@@ -9,6 +9,7 @@
  */
 package org.openmrs.module.skinhelpdesk.api.db;
 
+import org.openmrs.Patient;
 import org.openmrs.module.skinhelpdesk.SkinHelpDesk;
 import org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService;
 import org.springframework.stereotype.Repository;
@@ -24,9 +25,9 @@ public interface SkinHelpDeskDAO {
 	 */
 
      /**
-     * @see org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService#getLesionmap(java.lang.Integer)
+     * @see org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService#getLesionmap(org.openmrs.Patient)
      */
-    SkinHelpDesk getLesionmap(Integer patientID);
+    SkinHelpDesk getLesionmap(Patient patient);
     /**
      * @see org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService#saveLesionmap(org.openmrs.module.skinhelpdesk.SkinHelpDesk)
      */

@@ -9,6 +9,7 @@
  */
 package org.openmrs.module.skinhelpdesk.api.impl;
 
+import org.openmrs.Patient;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -41,11 +42,11 @@ public class SkinHelpDeskServiceImpl extends BaseOpenmrsService implements SkinH
 
 
     /**
-     * @see org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService#getLesionmap(java.lang.Integer)
+     * @see org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService#getLesionmap(org.openmrs.Patient)
      */
     @Override
-    public SkinHelpDesk getLesionmap(Integer patientId) {
-        return dao.getLesionmap(patientId);
+    public SkinHelpDesk getLesionmap(Patient patient) {
+        return dao.getLesionmap(patient);
     }
     /**
      * @see org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService#saveLesionmap(org.openmrs.module.skinhelpdesk.SkinHelpDesk)

@@ -10,15 +10,21 @@
 package org.openmrs.module.skinhelpdesk;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 
 import net.sourceforge.jtds.jdbc.DateTime;
 import org.openmrs.BaseOpenmrsObject;
 import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.Patient;
 import org.openmrs.User;
+import org.openmrs.api.context.Context;
+import org.openmrs.api.context.UserContext;
 
 /**
  * It is a model class. It should extend either {@link BaseOpenmrsObject} or {@link BaseOpenmrsMetadata}.
+ *
+ * Set Patient and Lesionmap
  */
 public class SkinHelpDesk extends BaseOpenmrsObject implements Serializable {
 
@@ -27,16 +33,18 @@ public class SkinHelpDesk extends BaseOpenmrsObject implements Serializable {
 	private Integer id;
 
     // patients would have a one-to-one lesionmap using lesionmap_patient_id
-    // lesionId, patientId, lesionMap, createdOn, updatedOn, updatedBy
+    // lesionId, patient, lesionMap, createdOn, updatedOn, updatedBy
 
     private Integer lesionId = 0;
     //private Integer patientId;
     private Patient patient;
     private String lesionMap;
-    private DateTime createdOn;
-    private DateTime updatedOn;
+    private Date createdOn;
+    private Date updatedOn;
     private String updatedBy;
     //private User user;
+    
+    private UserContext user;
 
     public Integer getLesionId() {
         return lesionId;
@@ -59,22 +67,27 @@ public class SkinHelpDesk extends BaseOpenmrsObject implements Serializable {
     }
 
     public void setLesionMap(String lesionMap) {
+
         this.lesionMap = lesionMap;
+        Calendar cal = Calendar.getInstance();
+        updatedOn = cal.getTime();
+        updatedBy = user.getAuthenticatedUser().getDisplayString();
+
     }
 
-    public DateTime getCreatedOn() {
+    public Date getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(DateTime createdOn) {
+    public void setCreatedOn(Date createdOn) {
         this.createdOn = createdOn;
     }
 
-    public DateTime getUpdatedOn() {
+    public Date getUpdatedOn() {
         return updatedOn;
     }
 
-    public void setUpdatedOn(DateTime updatedOn) {
+    public void setUpdatedOn(Date updatedOn) {
         this.updatedOn = updatedOn;
     }
 
@@ -84,6 +97,13 @@ public class SkinHelpDesk extends BaseOpenmrsObject implements Serializable {
 
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
+    }
+
+    //Set the date to current
+    public void setDate(){
+        Calendar cal = Calendar.getInstance();
+        createdOn = cal.getTime();
+        updatedOn = cal.getTime();
     }
 
     @Override
