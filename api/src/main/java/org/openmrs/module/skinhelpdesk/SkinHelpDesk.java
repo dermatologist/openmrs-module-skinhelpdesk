@@ -29,7 +29,7 @@ public class SkinHelpDesk extends BaseOpenmrsObject implements Serializable {
     // patients would have a one-to-one lesionmap using lesionmap_patient_id
     // lesionId, patientId, lesionMap, createdOn, updatedOn, updatedBy
 
-    private Integer lesionId;
+    private Integer lesionId = 0;
     //private Integer patientId;
     private Patient patient;
     private String lesionMap;

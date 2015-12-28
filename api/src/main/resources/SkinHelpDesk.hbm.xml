@@ -16,8 +16,9 @@
 			length="38" unique="true" />
         <property name="lesionId" type="java.lang.Integer" column="lesionid"
                   length="10" unique="true" />
-        <property name="patientId" type="java.lang.Integer" column="patientid"
-                  length="10" unique="true" />
+        <!-- one-to-one -->
+        <many-to-one name="patient" column="patientid" unique="true" class="org.openmrs.Patient" not-null="true"/>
+
         <property name="lesionMap" type="java.lang.String" column="lesionmap" />
         <property name="createdOn" type="java.lang.String" column="createdon"
                   length="38" />
