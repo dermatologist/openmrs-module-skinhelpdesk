@@ -8,5 +8,20 @@
         See http://www.liquibase.org/manual/home#available_database_refactorings
         for a list of supported elements and attributes
     -->
+    <changeSet author="beapen" id="20151228-1">
+        <comment>Create the SkinHelpDesk table</comment>
+        <createTable tableName="skinhelpdesk">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="uuid" type="char(38)" />
+            <column name="lesionid" type="char(38)" />
+            <column name="patientid" type="char(38)" />
+            <column name="lesionmap" type="text" />
+            <column name="createdon" type="datetime" />
+            <column name="updatedon" type="datetime" />
+            <column name="updatedby" type="varchar(255)" />
+        </createTable>
+    </changeSet>
     
 </databaseChangeLog>

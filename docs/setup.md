@@ -2,7 +2,7 @@
 
 
 * The dependency on ui-framework does not get added to pom.xml file in omod. Bug in create-module. Added manually. Refer page [[https://wiki.openmrs.org/display/docs/Using+the+UI+Framework+in+Your+Module]] 
-* Added fragments folder, fragment.controller, page.controller, resources.images, resources.styles
+* Added fragments folder, fragment.controller, page.controller, resources.images, resources.styles in /omod/..
 
 
 ## Notes
@@ -19,3 +19,9 @@
 * Data Model
 
 
+## Steps in Data Model creation
+* Update the Model file Ex: /api/src/main/java.../api/SkinHelpDesk
+* Updated Hibernate ORM Ex: /api/src/main/resources/SkinHelpDesk.hbm.xml
+* Updated Liquibase Ex: /api/src/main/resources/liquibase.xml
+* Updated SkinHelpDeskDAO (Interface) Ex: /api/src/main/java.../api/db/SkinHelpDeskDAO.java
+* Updated HibernateSkinHelpDeskDAO (Implementation) Ex: /api/src/main/java.../api/db/hibernate/HibernateSkinHelpDeskDAO.java

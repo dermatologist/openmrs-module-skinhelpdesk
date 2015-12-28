@@ -5,7 +5,7 @@
 
 <hibernate-mapping package="org.openmrs.module.skinhelpdesk">
 
-<!--
+
 	<class name="SkinHelpDesk"
 		table="skinhelpdesk">
 		<id name="id" type="int" column="id" unsaved-value="0">
@@ -14,7 +14,18 @@
 		<discriminator column="id" insert="false" />
 		<property name="uuid" type="java.lang.String" column="uuid"
 			length="38" unique="true" />
+        <property name="lesionId" type="java.lang.Integer" column="lesionid"
+                  length="10" unique="true" />
+        <property name="patientId" type="java.lang.Integer" column="patientid"
+                  length="10" unique="true" />
+        <property name="lesionMap" type="java.lang.String" column="lesionmap" />
+        <property name="createdOn" type="java.lang.String" column="createdon"
+                  length="38" />
+        <property name="updatedOn" type="java.lang.String" column="updatedon"
+                  length="38" />
+        <property name="updatedBy" type="java.lang.String" column="updatedby"
+                  length="38" />
 	</class>
--->
+
 
 </hibernate-mapping>

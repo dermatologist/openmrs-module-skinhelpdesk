@@ -12,6 +12,7 @@ package org.openmrs.module.skinhelpdesk.api.db.hibernate;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
+import org.openmrs.module.skinhelpdesk.SkinHelpDesk;
 import org.openmrs.module.skinhelpdesk.api.db.SkinHelpDeskDAO;
 
 /**
@@ -35,4 +36,27 @@ public class HibernateSkinHelpDeskDAO implements SkinHelpDeskDAO {
     public SessionFactory getSessionFactory() {
 	    return sessionFactory;
     }
+
+	/**
+	 * @see org.openmrs.module.skinhelpdesk.api.db.SkinHelpDeskDAO#getLesionmap(java.lang.Integer)
+	 */
+	@Override
+	public SkinHelpDesk getLesionmap(Integer patientId) {
+		return (SkinHelpDesk) sessionFactory.getCurrentSession().get(SkinHelpDesk.class, patientId);
+	}
+	/**
+	 * @see org.openmrs.module.skinhelpdesk.api.db.SkinHelpDeskDAO#saveLesionmap(org.openmrs.module.skinhelpdesk.SkinHelpDesk)
+	 */
+	@Override
+	public SkinHelpDesk saveLesionmap(SkinHelpDesk lesionmap) {
+		sessionFactory.getCurrentSession().save(lesionmap);
+		return lesionmap;
+	}
+	/**
+	 * @see org.openmrs.module.skinhelpdesk.api.db.SkinHelpDeskDAO#purgeLesionmap(org.openmrs.module.skinhelpdesk.SkinHelpDesk)
+	 */
+	@Override
+	public void purgeLesionmap(SkinHelpDesk lesionmap) {
+		sessionFactory.getCurrentSession().delete(lesionmap);
+	}
 }
