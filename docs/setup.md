@@ -11,6 +11,10 @@
 * ${ ui.resourceLinks() }
 * <link rel="icon" type="image/png\" href="/${ ui.contextPath() }/images/openmrs-favicon.png"/>
 * <img alt="" id="patientimg" src="${pageContext.request.contextPath}/moduleResources/patientimage/images/${patient.gender}.png" />
+* currentSession.saveOrUpdate(addressBook); currentSession.save(addressBook); 
+* return (SkinHelpDesk) sessionFactory.getCurrentSession().createQuery("from skinhelpdesk where patientid = " + patientId).uniqueResult();
+* //return (SkinHelpDesk) sessionFactory.getCurrentSession().get(SkinHelpDesk.class, patientId);
+
 
 
 ## ToDo

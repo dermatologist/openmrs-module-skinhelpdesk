@@ -15,6 +15,7 @@ import org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService;
 /**
  *  Database methods for {@link SkinHelpDeskService}.
  */
+
 public interface SkinHelpDeskDAO {
 	
 	/*
