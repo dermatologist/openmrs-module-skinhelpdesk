@@ -14,6 +14,8 @@ import java.io.Serializable;
 import net.sourceforge.jtds.jdbc.DateTime;
 import org.openmrs.BaseOpenmrsObject;
 import org.openmrs.BaseOpenmrsMetadata;
+import org.openmrs.Patient;
+import org.openmrs.User;
 
 /**
  * It is a model class. It should extend either {@link BaseOpenmrsObject} or {@link BaseOpenmrsMetadata}.
@@ -28,11 +30,13 @@ public class SkinHelpDesk extends BaseOpenmrsObject implements Serializable {
     // lesionId, patientId, lesionMap, createdOn, updatedOn, updatedBy
 
     private Integer lesionId;
-    private Integer patientId;
+    //private Integer patientId;
+    private Patient patient;
     private String lesionMap;
     private DateTime createdOn;
     private DateTime updatedOn;
-    private String updatedBy;
+    //private String updatedBy;
+    private User user;
 
     public Integer getLesionId() {
         return lesionId;
@@ -42,12 +46,12 @@ public class SkinHelpDesk extends BaseOpenmrsObject implements Serializable {
         this.lesionId = lesionId;
     }
 
-    public Integer getPatientId() {
-        return patientId;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setPatientId(Integer patientId) {
-        this.patientId = patientId;
+    public void setPatientId(Patient patient) {
+        this.patient = patient;
     }
 
     public String getLesionMap() {
@@ -74,12 +78,12 @@ public class SkinHelpDesk extends BaseOpenmrsObject implements Serializable {
         this.updatedOn = updatedOn;
     }
 
-    public String getUpdatedBy() {
-        return updatedBy;
+    public User getUpdatedBy() {
+        return user;
     }
 
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
+    public void setUpdatedBy(User user) {
+        this.user = user;
     }
 
     @Override
