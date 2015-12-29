@@ -17,6 +17,11 @@
 * return (SkinHelpDesk) sessionFactory.getCurrentSession().createQuery("from skinhelpdesk where patientid = " + patientId).uniqueResult();
 * //return (SkinHelpDesk) sessionFactory.getCurrentSession().get(SkinHelpDesk.class, patientId);
 * List<addressbook> list = currentSession.createCriteria(AddressBook.class).add(Restrictions.eq("name", name)).list();  
+* _extension and _app in the app folder under resources
+```
+  <a href="${ ui.pageLink("orderentryui", "drugOrders", [patient: patient.id, returnUrl: ui.thisUrl()]) }">
+```
+
 
 
 ## ToDo

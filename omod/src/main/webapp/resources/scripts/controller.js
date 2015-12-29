@@ -364,7 +364,6 @@ function addAccessors($scope) {
   
   $scope.addImage1 = function() {
     addImage('papule.jpg', 0.5, 0.75);
-    alert("Test");
   };
 
   $scope.addImage2 = function() {

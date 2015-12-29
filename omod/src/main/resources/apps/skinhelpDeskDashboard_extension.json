@@ -1,0 +1,10 @@
+[
+  { // adds lesionmap section to patient dashboard
+    "id": "skinhelpdesk.lesionMap.dashboard",
+    "extensionPointId": "patientDashboard.secondColumnFragments",
+    "extensionParams": {
+      "provider": "skinhelpdesk",
+      "fragment": "skinhelpdesk"
+    }
+  }
+]

@@ -19,6 +19,10 @@
 <% ui.includeJavascript("skinhelpdesk", "controller.js") %>
 
 
+<h1>${ patient.id }</h1>
+
+
+
 <script>
 
         function makeid()
@@ -49,14 +53,14 @@ jQuery(document).ready(function() {
         //rasterizeJSON();
 
         var input = getLocation(); //post variables
-        var doit = "doit=1";
+        var doit = "patientId=7";
         input = "input="+input;
         //var consultation_category_id = "consultation_category_id="+"";
         var myData = doit+"&"+input;
 
         jQuery.ajax({
             type: "POST", // HTTP method POST or GET
-            url: "ajax_lesionmapper.php", //Where to make Ajax calls
+            url: "${ ui.actionLink("getMap") }", //Where to make Ajax calls
             dataType:"text", // Data type, HTML, json etc.
             data:myData, //post variables
             success:function(response){
@@ -88,20 +92,20 @@ jQuery(document).ready(function() {
 
     });
 
-    jQuery("#FormLoad").click(function (e) {
+    jQuery("#_FormLoad").click(function (e) {
 
         e.preventDefault();
 
 
         var input = "input="+ jQuery("#lesionid").val(); //post variables
-        var doit = "doit=2";
+        var doit = "patientId=7";
         //var consultation_category_id = "consultation_category_id="+"";
         var myData = doit+"&"+input;
 
 
         jQuery.ajax({
             type: "POST", // HTTP method POST or GET
-            url: "ajax_lesionmapper.php", //Where to make Ajax calls
+            url: "${ ui.actionLink("getMap") }", //Where to make Ajax calls
             dataType:"text", // Data type, HTML, json etc.
             data:myData, //post variables
             success:function(response){
@@ -113,6 +117,26 @@ jQuery(document).ready(function() {
                 alert(thrownError); //throw any errors
             }
         });
+    });
+
+
+    jQuery("#FormLoad").click(function (e) {
+
+        e.preventDefault();
+
+
+        var input = "input="+ jQuery("#lesionid").val(); //post variables
+        var doit = "patientId=7";
+        //var consultation_category_id = "consultation_category_id="+"";
+        var myData = doit+"&"+input;
+
+
+        jq.getJSON('${ ui.actionLink("getMap", [returnFormat: "json"]) }', { patientId: 7 },
+
+                function(data) {
+                    alert(data.message);
+                });
+
     });
 });
 
