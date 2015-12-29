@@ -9,14 +9,31 @@
  */
 package org.openmrs.module.skinhelpdesk.api.db;
 
+import org.openmrs.Patient;
+import org.openmrs.module.skinhelpdesk.SkinHelpDesk;
 import org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService;
+import org.springframework.stereotype.Repository;
 
 /**
  *  Database methods for {@link SkinHelpDeskService}.
  */
+@Repository
 public interface SkinHelpDeskDAO {
 	
 	/*
 	 * Add DAO methods here
 	 */
+
+     /**
+     * @see org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService#getLesionmap(org.openmrs.Patient)
+     */
+    SkinHelpDesk getLesionmap(Patient patient);
+    /**
+     * @see org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService#saveLesionmap(org.openmrs.module.skinhelpdesk.SkinHelpDesk)
+     */
+    SkinHelpDesk saveLesionmap(SkinHelpDesk lesionmap);
+    /**
+     * @see org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService#purgeLesionmap(org.openmrs.module.skinhelpdesk.SkinHelpDesk)
+     */
+    void purgeLesionmap(SkinHelpDesk lesionmap);
 }
