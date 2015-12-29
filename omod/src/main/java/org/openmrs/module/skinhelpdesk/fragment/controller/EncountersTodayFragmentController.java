@@ -1,11 +1,18 @@
 package org.openmrs.module.skinhelpdesk.fragment.controller;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
+import org.openmrs.Encounter;
+import org.openmrs.Patient;
 import org.openmrs.api.EncounterService;
+import org.openmrs.ui.framework.SimpleObject;
+import org.openmrs.ui.framework.UiUtils;
 import org.openmrs.ui.framework.annotation.SpringBean;
 import org.openmrs.ui.framework.annotation.FragmentParam;
 import org.openmrs.ui.framework.fragment.FragmentModel;
+import org.springframework.web.bind.annotation.RequestParam;
+
 /**
  * Created by beapen on 27/12/15.
  * Example File. To be deleted later.
@@ -18,6 +25,7 @@ public class EncountersTodayFragmentController {
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 0);
+        cal.add(Calendar.MONTH, -1);
         return cal.getTime();
     }
 
@@ -41,5 +49,13 @@ public class EncountersTodayFragmentController {
 
         model.addAttribute("encounters", service.getEncounters(null, null, startDate, endDate, null, null, null, false));
     }
+
+    @SuppressWarnings("unchecked")
+    public Object getActiveIdentifiers(UiUtils ui,
+                                       @RequestParam("patientId") Patient patient) {
+        return SimpleObject.fromCollection(patient.getActiveIdentifiers(), ui,
+                "patientIdentifierId", "identifierType", "identifier", "location");
+    }
+
 
 }
