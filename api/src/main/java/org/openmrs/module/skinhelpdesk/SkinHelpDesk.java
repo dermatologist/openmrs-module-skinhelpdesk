@@ -41,9 +41,9 @@ public class SkinHelpDesk extends BaseOpenmrsObject implements Serializable {
     private String lesionMap;
     private Date createdOn;
     private Date updatedOn;
-    private String updatedBy;
+    private String updatedBy = "UNKNOWN";
     //private User user;
-    
+
     private UserContext user;
 
     public Integer getLesionId() {
@@ -58,7 +58,7 @@ public class SkinHelpDesk extends BaseOpenmrsObject implements Serializable {
         return patient;
     }
 
-    public void setPatientId(Patient patient) {
+    public void setPatient(Patient patient) {
         this.patient = patient;
     }
 
@@ -71,7 +71,6 @@ public class SkinHelpDesk extends BaseOpenmrsObject implements Serializable {
         this.lesionMap = lesionMap;
         Calendar cal = Calendar.getInstance();
         updatedOn = cal.getTime();
-        updatedBy = user.getAuthenticatedUser().getDisplayString();
 
     }
 
