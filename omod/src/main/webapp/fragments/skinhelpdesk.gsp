@@ -1,7 +1,3 @@
-<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />
-<link href='http://fonts.googleapis.com/css?family=Plaster' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Engagement' rel='stylesheet' type='text/css'>
-
 
 <!-- Include Custom CSS -->
 <% ui.includeCss("skinhelpdesk", "skinhelpdesk.css") %>
@@ -18,8 +14,6 @@
 <% ui.includeJavascript("skinhelpdesk", "app_config.js") %>
 <% ui.includeJavascript("skinhelpdesk", "controller.js") %>
 
-
-<h1>${ patient.id }</h1>
 
 
 
@@ -151,9 +145,9 @@ document.getElementById('saveexample').appendChild(btn);
 
 
 <div ng-app="kitchensink">
-   <div style="position:relative;width:704px;float:left;" id="canvas-wrapper" ng-controller="CanvasControls">
+   <div style="position:relative;width:600px;float:left;" id="canvas-wrapper" ng-controller="CanvasControls">
         <div id="saveexample">
-            <canvas id="canvas" width="600" height="500"></canvas>
+            <canvas id="canvas" width="490" height="415"></canvas>
         </div>
 
         <div id="color-opacity-controls" ng-show="canvas.getActiveObject()">
