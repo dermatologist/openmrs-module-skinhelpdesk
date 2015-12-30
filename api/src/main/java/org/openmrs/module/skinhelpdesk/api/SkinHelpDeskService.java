@@ -9,7 +9,9 @@
  */
 package org.openmrs.module.skinhelpdesk.api;
 
+import org.openmrs.Patient;
 import org.openmrs.api.OpenmrsService;
+import org.openmrs.module.skinhelpdesk.SkinHelpDesk;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -29,4 +31,27 @@ public interface SkinHelpDeskService extends OpenmrsService {
 	 * Add service methods here
 	 * 
 	 */
+
+
+    /**
+     * Gets a lesionmap for a given id.
+     *
+     * @param patient
+     * @return the lesionmap with the given id
+     */
+    @Transactional(readOnly = true)
+    SkinHelpDesk getLesionmap(Patient patient);
+    /**
+     * Saves a new or existing lesionmap.
+     *
+     * @param lesionmap the department to save.
+     * @return the saved department.
+     */
+    SkinHelpDesk saveLesionmap(SkinHelpDesk lesionmap);
+    /**
+     * Deletes a lesionmap from the database.
+     *
+     * @param lesionmap the department to delete.
+     */
+    void purgeLesionmap(SkinHelpDesk lesionmap);
 }
