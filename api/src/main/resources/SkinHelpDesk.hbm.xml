@@ -20,9 +20,9 @@
         <many-to-one name="patient" column="patientid" unique="true" class="org.openmrs.Patient" not-null="true"/>
 
         <property name="lesionMap" type="java.lang.String" column="lesionmap" />
-        <property name="createdOn" type="java.lang.String" column="createdon"
+        <property name="createdOn" type="java.util.Date" column="createdon"
                   length="38" />
-        <property name="updatedOn" type="java.lang.String" column="updatedon"
+        <property name="updatedOn" type="java.util.Date" column="updatedon"
                   length="38" />
         <property name="updatedBy" type="java.lang.String" column="updatedby"
                   length="38" />

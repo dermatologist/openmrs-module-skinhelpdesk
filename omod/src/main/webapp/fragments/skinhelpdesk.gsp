@@ -22,96 +22,39 @@ jQuery(document).ready(function() {
     addWatermark();
     var timer = setTimeout(function() { jQuery("#FormLoad").click(); }, 2000);
 
+
+
+
     //##### Add record when Add Record Button is clicked #########
     jQuery("#FormSave").click(function (e) {
 
         e.preventDefault();
-
-        //rasterizeJSON();
-
-        var input = getLocation(); //post variables
-        var doit = "patientId=7";
-        input = "input="+input;
-        //var consultation_category_id = "consultation_category_id="+"";
-        var myData = doit+"&"+input;
-
-        jQuery.ajax({
-            type: "POST", // HTTP method POST or GET
-            url: "${ ui.actionLink("getMap") }", //Where to make Ajax calls
-            dataType:"text", // Data type, HTML, json etc.
-            data:myData, //post variables
-            success:function(response){
-                jQuery("#responds").empty();
-                var url1 = 'http://skinhelpdesk.com/lesionmap.php?lesionid='+response;
-                var message1 = '<p><strong>The lesionMap is stored with the ID: </strong>'+response+'<br>URL: '+url1+'</p>';
-                jQuery("#responds").append(message1);
-                window.prompt("Copy to clipboard: Ctrl+C, Enter", url1);
-                jQuery('#vdbutton').fadeIn();
-                //alert(response);
-            },
-            error:function (xhr, ajaxOptions, thrownError){
-                alert(thrownError); //throw any errors
-            }
-        });
-    });
-
-    jQuery("#sendVD").click(function (e) {
-
-        e.preventDefault();
-
-        //rasterizeJSON();
-
-        var input2 = getLocation(); //post variables
-        jQuery('#history').val(cdss(input2));  //cdss is a function in lesionmap.js
-        jQuery("#consult").click();
-        jQuery('#vdbutton').fadeOut();
-
+        var patientid = ${ patient.id };
+        var imagemap = getLocation();
+        jQuery.post('${ ui.actionLink("putMap") }', { returnFormat: 'json', patientId: patientid, lesionmap: imagemap },
+                function(data) {
+                    response = data.message;
+                    jQuery("#responds").empty();
+                    jQuery("#responds").append(response);
+                })
+                .error(function() {
+                    notifyError("Programmer error: delete identifier failed");
+        })
 
     });
 
-    jQuery("#_FormLoad").click(function (e) {
-
-        e.preventDefault();
-
-
-        var input = "input="+ jQuery("#lesionid").val(); //post variables
-        var doit = "patientId=7";
-        //var consultation_category_id = "consultation_category_id="+"";
-        var myData = doit+"&"+input;
-
-
-        jQuery.ajax({
-            type: "POST", // HTTP method POST or GET
-            url: "${ ui.actionLink("getMap") }", //Where to make Ajax calls
-            dataType:"text", // Data type, HTML, json etc.
-            data:myData, //post variables
-            success:function(response){
-                response = response.replace(/\\"/g, '"');
-                setLocation(response);
-                jQuery("#FormDisplay").click();
-            },
-            error:function (xhr, ajaxOptions, thrownError){
-                alert(thrownError); //throw any errors
-            }
-        });
-    });
 
 
     jQuery("#FormLoad").click(function (e) {
 
         e.preventDefault();
-
-
-        var input = "input="+ jQuery("#lesionid").val(); //post variables
-        var doit = "patientId=7";
-        //var consultation_category_id = "consultation_category_id="+"";
-        var myData = doit+"&"+input;
-
-
-        jq.getJSON('${ ui.actionLink("getMap", [returnFormat: "json"]) }', { patientId: 7 },
+        jQuery.getJSON('${ ui.actionLink("getMap", [returnFormat: "json"]) }', { patientId: ${ patient.id } },
 
                 function(data) {
-                    alert(data.message);
+                    response = data.message;
+                    response = response.replace(/\\"/g, '"');
+                    setLocation(response);
+                    jQuery("#FormDisplay").click();
                 });
 
     });
