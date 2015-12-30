@@ -7,7 +7,6 @@
 <% ui.includeJavascript("skinhelpdesk", "angular.min.js") %>
 <% ui.includeJavascript("skinhelpdesk", "fabric.js") %>
 <% ui.includeJavascript("skinhelpdesk", "paster.js") %>
-<% ui.includeJavascript("skinhelpdesk", "lesionmap.js") %>
 <% ui.includeJavascript("skinhelpdesk", "font_definitions.js") %>
 <% ui.includeJavascript("skinhelpdesk", "utils.js") %>
 <% ui.includeJavascript("skinhelpdesk", "app_config.js") %>
