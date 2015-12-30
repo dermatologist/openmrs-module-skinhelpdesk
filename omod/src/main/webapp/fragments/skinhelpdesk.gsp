@@ -19,24 +19,9 @@
 
 <script>
 
-        function makeid()
-        {
-            var text = "";
-            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-            for( var i=0; i < 5; i++ )
-                text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-            return text;
-        }
-
-sessionStorage.randomFile1 = makeid();
-sessionStorage.randomFile2 = makeid();
 
 jQuery(document).ready(function() {
     addWatermark();
-    jQuery('#virtualderm').hide();
-    jQuery('#vdbutton').fadeOut();
     var timer = setTimeout(function() { jQuery("#FormLoad").click(); }, 2000);
 
     //##### Add record when Add Record Button is clicked #########
