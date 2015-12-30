@@ -8,7 +8,6 @@
 <% ui.includeJavascript("skinhelpdesk", "fabric.js") %>
 <% ui.includeJavascript("skinhelpdesk", "paster.js") %>
 <% ui.includeJavascript("skinhelpdesk", "lesionmap.js") %>
-<% ui.includeJavascript("skinhelpdesk", "canvassaver.js") %>
 <% ui.includeJavascript("skinhelpdesk", "font_definitions.js") %>
 <% ui.includeJavascript("skinhelpdesk", "utils.js") %>
 <% ui.includeJavascript("skinhelpdesk", "app_config.js") %>
@@ -121,19 +120,14 @@ jQuery(document).ready(function() {
 
 </script>
 
-<script>
-var cs = new CanvasSaver('script/saveme.php');
-var cnvs = document.getElementById('canvas');
-var btn = cs.generateButton('Download image', cnvs, 'lesionmap');
-document.getElementById('saveexample').appendChild(btn);
-</script>
+
 
 
 <div ng-app="kitchensink">
    <div style="position:relative;width:600px;float:left;" id="canvas-wrapper" ng-controller="CanvasControls">
-        <div id="saveexample">
+
             <canvas id="canvas" width="490" height="415"></canvas>
-        </div>
+
 
         <div id="color-opacity-controls" ng-show="canvas.getActiveObject()">
             <label for="opacity">Opacity: </label>
