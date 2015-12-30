@@ -21,7 +21,7 @@
 ```
   <a href="${ ui.pageLink("orderentryui", "drugOrders", [patient: patient.id, returnUrl: ui.thisUrl()]) }">
 ```
-
+* java.util.Date and java.lang.String
 
 
 ## ToDo

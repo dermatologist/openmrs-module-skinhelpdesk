@@ -1,4 +1,4 @@
-  (function() {
+ (function() {
 
     if (document.location.hash !== '#zoom') return;
 
@@ -88,3 +88,35 @@
       isDown = false;
     });
   })();
+
+//////////////////////////////////////////////////////////////
+
+    (function(){
+        var mainScriptEl = document.getElementById('main');
+        if (!mainScriptEl) return;
+        var preEl = document.createElement('pre');
+        var codeEl = document.createElement('code');
+        codeEl.innerHTML = mainScriptEl.innerHTML;
+        codeEl.className = 'language-javascript';
+        preEl.appendChild(codeEl);
+        document.getElementById('bd-wrapper').appendChild(preEl);
+      })();
+
+///////////////////////////////////////////////////////////////
+
+(function() {
+  fabric.util.addListener(fabric.window, 'load', function() {
+    var canvas = this.__canvas || this.canvas,
+        canvases = this.__canvases || this.canvases;
+
+    canvas && canvas.calcOffset && canvas.calcOffset();
+
+    if (canvases && canvases.length) {
+      for (var i = 0, len = canvases.length; i < len; i++) {
+        canvases[i].calcOffset();
+      }
+    }
+  });
+})();
+
+///////////////////////////////////////////////////////////////

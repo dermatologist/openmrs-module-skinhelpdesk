@@ -59,7 +59,9 @@ public class SkinHelpDesk extends BaseOpenmrsObject implements Serializable {
     }
 
     public void setPatient(Patient patient) {
+
         this.patient = patient;
+        setDate();
     }
 
     public String getLesionMap() {

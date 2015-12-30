@@ -1,7 +1,3 @@
-<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />
-<link href='http://fonts.googleapis.com/css?family=Plaster' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Engagement' rel='stylesheet' type='text/css'>
-
 
 <!-- Include Custom CSS -->
 <% ui.includeCss("skinhelpdesk", "skinhelpdesk.css") %>
@@ -11,130 +7,54 @@
 <% ui.includeJavascript("skinhelpdesk", "angular.min.js") %>
 <% ui.includeJavascript("skinhelpdesk", "fabric.js") %>
 <% ui.includeJavascript("skinhelpdesk", "paster.js") %>
-<% ui.includeJavascript("skinhelpdesk", "lesionmap.js") %>
-<% ui.includeJavascript("skinhelpdesk", "canvassaver.js") %>
 <% ui.includeJavascript("skinhelpdesk", "font_definitions.js") %>
 <% ui.includeJavascript("skinhelpdesk", "utils.js") %>
 <% ui.includeJavascript("skinhelpdesk", "app_config.js") %>
 <% ui.includeJavascript("skinhelpdesk", "controller.js") %>
-
-
-<h1>${ patient.id }</h1>
+<% ui.includeJavascript("skinhelpdesk", "skinhelpdesk.js") %>
 
 
 
 <script>
 
-        function makeid()
-        {
-            var text = "";
-            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-            for( var i=0; i < 5; i++ )
-                text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-            return text;
-        }
-
-sessionStorage.randomFile1 = makeid();
-sessionStorage.randomFile2 = makeid();
 
 jQuery(document).ready(function() {
     addWatermark();
-    jQuery('#virtualderm').hide();
-    jQuery('#vdbutton').fadeOut();
     var timer = setTimeout(function() { jQuery("#FormLoad").click(); }, 2000);
+
+
+
 
     //##### Add record when Add Record Button is clicked #########
     jQuery("#FormSave").click(function (e) {
 
         e.preventDefault();
-
-        //rasterizeJSON();
-
-        var input = getLocation(); //post variables
-        var doit = "patientId=7";
-        input = "input="+input;
-        //var consultation_category_id = "consultation_category_id="+"";
-        var myData = doit+"&"+input;
-
-        jQuery.ajax({
-            type: "POST", // HTTP method POST or GET
-            url: "${ ui.actionLink("getMap") }", //Where to make Ajax calls
-            dataType:"text", // Data type, HTML, json etc.
-            data:myData, //post variables
-            success:function(response){
-                jQuery("#responds").empty();
-                var url1 = 'http://skinhelpdesk.com/lesionmap.php?lesionid='+response;
-                var message1 = '<p><strong>The lesionMap is stored with the ID: </strong>'+response+'<br>URL: '+url1+'</p>';
-                jQuery("#responds").append(message1);
-                window.prompt("Copy to clipboard: Ctrl+C, Enter", url1);
-                jQuery('#vdbutton').fadeIn();
-                //alert(response);
-            },
-            error:function (xhr, ajaxOptions, thrownError){
-                alert(thrownError); //throw any errors
-            }
-        });
-    });
-
-    jQuery("#sendVD").click(function (e) {
-
-        e.preventDefault();
-
-        //rasterizeJSON();
-
-        var input2 = getLocation(); //post variables
-        jQuery('#history').val(cdss(input2));  //cdss is a function in lesionmap.js
-        jQuery("#consult").click();
-        jQuery('#vdbutton').fadeOut();
-
+        var patientid = ${ patient.id };
+        var imagemap = getLocation();
+        jQuery.post('${ ui.actionLink("putMap") }', { returnFormat: 'json', patientId: patientid, lesionmap: imagemap },
+                function(data) {
+                    response = data.message;
+                    jQuery("#responds").empty();
+                    jQuery("#responds").append(response);
+                })
+                .error(function() {
+                    notifyError("Programmer error: delete identifier failed");
+        })
 
     });
 
-    jQuery("#_FormLoad").click(function (e) {
-
-        e.preventDefault();
-
-
-        var input = "input="+ jQuery("#lesionid").val(); //post variables
-        var doit = "patientId=7";
-        //var consultation_category_id = "consultation_category_id="+"";
-        var myData = doit+"&"+input;
-
-
-        jQuery.ajax({
-            type: "POST", // HTTP method POST or GET
-            url: "${ ui.actionLink("getMap") }", //Where to make Ajax calls
-            dataType:"text", // Data type, HTML, json etc.
-            data:myData, //post variables
-            success:function(response){
-                response = response.replace(/\\"/g, '"');
-                setLocation(response);
-                jQuery("#FormDisplay").click();
-            },
-            error:function (xhr, ajaxOptions, thrownError){
-                alert(thrownError); //throw any errors
-            }
-        });
-    });
 
 
     jQuery("#FormLoad").click(function (e) {
 
         e.preventDefault();
-
-
-        var input = "input="+ jQuery("#lesionid").val(); //post variables
-        var doit = "patientId=7";
-        //var consultation_category_id = "consultation_category_id="+"";
-        var myData = doit+"&"+input;
-
-
-        jq.getJSON('${ ui.actionLink("getMap", [returnFormat: "json"]) }', { patientId: 7 },
+        jQuery.getJSON('${ ui.actionLink("getMap", [returnFormat: "json"]) }', { patientId: ${ patient.id } },
 
                 function(data) {
-                    alert(data.message);
+                    response = data.message;
+                    response = response.replace(/\\"/g, '"');
+                    setLocation(response);
+                    jQuery("#FormDisplay").click();
                 });
 
     });
@@ -142,19 +62,14 @@ jQuery(document).ready(function() {
 
 </script>
 
-<script>
-var cs = new CanvasSaver('script/saveme.php');
-var cnvs = document.getElementById('canvas');
-var btn = cs.generateButton('Download image', cnvs, 'lesionmap');
-document.getElementById('saveexample').appendChild(btn);
-</script>
+
 
 
 <div ng-app="kitchensink">
-   <div style="position:relative;width:704px;float:left;" id="canvas-wrapper" ng-controller="CanvasControls">
-        <div id="saveexample">
-            <canvas id="canvas" width="600" height="500"></canvas>
-        </div>
+   <div style="position:relative;width:600px;float:left;" id="canvas-wrapper" ng-controller="CanvasControls">
+
+            <canvas id="canvas" width="490" height="415"></canvas>
+
 
         <div id="color-opacity-controls" ng-show="canvas.getActiveObject()">
             <label for="opacity">Opacity: </label>
@@ -208,43 +123,20 @@ document.getElementById('saveexample').appendChild(btn);
                                 <button type="button" id ="i_started" class="btn-xlarge" ng-click="addImage25()">Started</button>
                                 <button type="button" id ="i_central" class="btn-xlarge" ng-click="addImage26()">Central</button>
                 </p>
-                <p>
-                    <input name="lesionid" id="lesionid" value="">
-                    <button type="button" class="button" id="FormLoad">Load</button>
+
+                     <button type="button" class="button" id="FormLoad">Load</button>
+                    <button class="button" id="FormSave" ng-click="rasterizeJSON()">SAVE</button>
+                    <button class="button" ng-click="addText()">Add text</button>
+                	<button class="button [secondary success alert]" ng-click="confirmClear()">Clear canvas</button>
+
                     <div id="FormDisplay" ng-click="loadSVG()"></div>
-                </p>
-	</div><!-- commands -->
-
-
-
-
-        <div id="global-controls">
-        	<p><button class="button" id="FormSave" ng-click="rasterizeJSON()">SAVE</button></p>
         </div>
 
-	<p>
-		<div id="responds"></div>
-                <button class="button" ng-click="addText()">Add text</button>
-        </p>
-
-	<p>
-               	<a href="#" id="addimage1" target="_blank" class="button">Upload Image 1</a>
-                <a href="#" id="addimage2" target="_blank" class="button">Upload Image 2</a>
-                <br><small>It is the users responsibility to ensure that the image after cropping the lesion is not personally identifiable.</small>
-                <script>
-			var a = document.getElementById("addimage1");
-			a.href = "addimage.php?randomFile=" + encodeURIComponent(sessionStorage.getItem("randomFile1"));
-			var b = document.getElementById("addimage2");
-			b.href = "addimage.php?randomFile=" + encodeURIComponent(sessionStorage.getItem("randomFile2"));
-		</script>
-        </p>
-
-	<p>
-        	<button class="button [secondary success alert]" ng-click="confirmClear()">Clear canvas</button>
-        </p>
 
 
-	<div style="margin-top:10px;" id="drawing-mode-wrapper">
+
+
+	<div id="drawing-mode-wrapper">
         	<button id="drawing-mode" class="button"
           		ng-click="setFreeDrawingMode(!getFreeDrawingMode())"
           		ng-class="{'btn-inverse': getFreeDrawingMode()}">
@@ -271,8 +163,10 @@ document.getElementById('saveexample').appendChild(btn);
 			<label for="drawing-shadow-width">Line shadow width:</label>
 			<input type="range" value="0" min="0" max="50" bind-value-to="drawingLineShadowWidth">
                 </div><!-- DRAWING MODE OPTION-->
-        </div><!-- DRAWING MODE WRAPPER-->
-   </div>
+    </div><!-- DRAWING MODE WRAPPER-->
+   	<p><div id="responds"></div></p>
+
+   </div> <!-- canvas-wrapper -->
 </div><!-- ng-app kitchensink -->
 
 <script>
@@ -282,128 +176,4 @@ document.getElementById('saveexample').appendChild(btn);
 
 </script>
 
-<script>
-
-  (function() {
-
-    if (document.location.hash !== '#zoom') return;
-
-    function renderVieportBorders() {
-      var ctx = canvas.getContext();
-
-      ctx.save();
-
-      ctx.fillStyle = 'rgba(0,0,0,0.1)';
-
-      ctx.fillRect(
-        canvas.viewportTransform[4],
-        canvas.viewportTransform[5],
-        canvas.getWidth() * canvas.getZoom(),
-        canvas.getHeight() * canvas.getZoom());
-
-      ctx.setLineDash([5, 5]);
-
-      ctx.strokeRect(
-        canvas.viewportTransform[4],
-        canvas.viewportTransform[5],
-        canvas.getWidth() * canvas.getZoom(),
-        canvas.getHeight() * canvas.getZoom());
-
-      // var viewport = canvas.getViewportCenter();
-      //console.log(canvas.getZoom(), viewport.x, viewport.y);
-
-      ctx.restore();
-    }
-
-    jQuery(canvas.getElement().parentNode).on('wheel mousewheel', function(e) {
-
-      // canvas.setZoom(canvas.getZoom() + e.originalEvent.wheelDelta / 300);
-
-      var newZoom = canvas.getZoom() + e.originalEvent.wheelDelta / 300;
-      canvas.zoomToPoint({ x: e.offsetX, y: e.offsetY }, newZoom);
-
-      renderVieportBorders();
-
-      return false;
-    });
-
-    var viewportLeft = 0,
-        viewportTop = 0,
-        mouseLeft,
-        mouseTop,
-        _drawSelection = canvas._drawSelection,
-        isDown = false;
-
-    canvas.on('mouse:down', function(options) {
-      isDown = true;
-
-      viewportLeft = canvas.viewportTransform[4];
-      viewportTop = canvas.viewportTransform[5];
-
-      mouseLeft = options.e.x;
-      mouseTop = options.e.y;
-
-      if (options.e.altKey) {
-        _drawSelection = canvas._drawSelection;
-        canvas._drawSelection = function(){ };
-      }
-
-      renderVieportBorders();
-    });
-
-    canvas.on('mouse:move', function(options) {
-      if (options.e.altKey && isDown) {
-        var currentMouseLeft = options.e.x;
-        var currentMouseTop = options.e.y;
-
-        var deltaLeft = currentMouseLeft - mouseLeft,
-            deltaTop = currentMouseTop - mouseTop;
-
-        canvas.viewportTransform[4] = viewportLeft + deltaLeft;
-        canvas.viewportTransform[5] = viewportTop + deltaTop;
-
-        console.log(deltaLeft, deltaTop);
-
-        canvas.renderAll();
-        renderVieportBorders();
-      }
-    });
-
-    canvas.on('mouse:up', function() {
-      canvas._drawSelection = _drawSelection;
-      isDown = false;
-    });
-  })();
-
-</script>
-
-    <script>
-      (function(){
-        var mainScriptEl = document.getElementById('main');
-        if (!mainScriptEl) return;
-        var preEl = document.createElement('pre');
-        var codeEl = document.createElement('code');
-        codeEl.innerHTML = mainScriptEl.innerHTML;
-        codeEl.className = 'language-javascript';
-        preEl.appendChild(codeEl);
-        document.getElementById('bd-wrapper').appendChild(preEl);
-      })();
-    </script>
-
-    <script>
-(function() {
-  fabric.util.addListener(fabric.window, 'load', function() {
-    var canvas = this.__canvas || this.canvas,
-        canvases = this.__canvases || this.canvases;
-
-    canvas && canvas.calcOffset && canvas.calcOffset();
-
-    if (canvases && canvases.length) {
-      for (var i = 0, len = canvases.length; i < len; i++) {
-        canvases[i].calcOffset();
-      }
-    }
-  });
-})();
-</script>
 

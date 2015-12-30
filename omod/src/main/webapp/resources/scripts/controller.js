@@ -10,45 +10,16 @@ function getActiveStyle(styleName, object) {
 
 function addWatermark() {
   //code
-     var lm_wm = 'Created with LesionMapper(TM) on ';
-   var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-
-    if(dd<10) {
-        dd='0'+dd
-    } 
-
-    if(mm<10) {
-        mm='0'+mm
-    } 
-
-    today = mm+'/'+dd+'/'+yyyy;
-    lm_wm = lm_wm + today;
-    
-    lm_wm2 = 'Do not add Personally identifiable information.';
-    lm_wm3 = 'http://skinhelpdesk.com/lesionmap.php'
-    canvas.add(new fabric.IText(lm_wm, { 
+     var lm_wm = 'Created with LesionMapper(TM): http://skinhelpdesk.com ';
+     canvas.add(new fabric.IText(lm_wm, {
       fontFamily: 'Verdana',
-      fontSize: 12,
-      left: 175, 
+      fontSize: 14,
+      left: 40,
+      fillStyle: 'yellow',
       top: 0 ,
     }));
     
-    canvas.add(new fabric.IText(lm_wm3, { 
-      fontFamily: 'Verdana',
-      fontSize: 12,
-      left: 175, 
-      top: 14 ,
-    }));
 
-    canvas.add(new fabric.IText(lm_wm2, { 
-      fontFamily: 'Verdana',
-      fontSize: 8,
-      left: 195, 
-      top: 480 ,
-    }));
 
 }
 
