@@ -11,6 +11,7 @@ package org.openmrs.module.skinhelpdesk.api;
 
 import static org.junit.Assert.*;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openmrs.Patient;
@@ -29,50 +30,61 @@ import static org.mockito.Mockito.*;
 public class  SkinHelpDeskServiceTest extends BaseModuleContextSensitiveTest {
 
     private SkinHelpDeskService service;
-    private UserService userService;
     private PatientService patientService;
     private SkinHelpDesk lesionmap;
-    private User user;
     private Patient patient;
 
     @Before
     public void setUp(){
-        //service = Context.getService(SkinHelpDeskService.class);
-        userService = Context.getUserService();
+        service = Context.getService(SkinHelpDeskService.class);
         patientService = Context.getPatientService();
-        service = mock(SkinHelpDeskService.class);
-        when(service.saveLesionmap(lesionmap)).thenReturn(lesionmap);
-        //userService = mock(UserService.class);
-        //patientService = mock(PatientService.class);
-        user = userService.getUser(1);
-        patient = patientService.getPatient(1);
-        lesionmap = new SkinHelpDesk();
+        patient = patientService.getPatient(2);  // Dataset
+
+        try {
+            executeDataSet("SkinHelpDeskTestDataSet.xml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
+    /**
+     * @verifies return the lesionmap for the patient
+     * @see SkinHelpDeskService#getLesionmap(Patient)
+     */
     @Test
-    public void shouldSetupContext() {
-
-        assertNotNull(service);
-        assertNotNull(userService);
-        assertNotNull(patientService);
-
+    public void getLesionmap_shouldReturnTheLesionmapForThePatient() throws Exception {
+        //TODO auto-generated
+        lesionmap = service.getLesionmap(patient);
+        Assert.assertNotNull(lesionmap);
     }
 
-
+    /**
+     * @verifies return saved lesionmap
+     * @see SkinHelpDeskService#saveLesionmap(SkinHelpDesk)
+     */
     @Test
-    public void shouldSetLesionmap(){
-        lesionmap.setPatient(patient);
-        lesionmap.setLesionMap("This is a test");
-        assertNotNull(lesionmap.getUpdatedBy());
-        assertNotNull(lesionmap.getUpdatedOn());
+    public void saveLesionmap_shouldReturnSavedLesionmap() throws Exception {
+        //TODO auto-generated
+        String imagemap = "Test Map";
+        lesionmap = service.getLesionmap(patient);
+        lesionmap.setLesionMap(imagemap);
+        SkinHelpDesk testMap = service.saveLesionmap(lesionmap);
+        Assert.assertNotNull(testMap);
+        Assert.assertNotEquals(0,testMap.getLesionMap().length());
     }
 
+    /**
+     * @verifies delete the lesionmap
+     * @see SkinHelpDeskService#purgeLesionmap(SkinHelpDesk)
+     */
     @Test
-    public void shouldCallSave() {
-        lesionmap.setPatient(patient);
-        lesionmap.setLesionMap("This is a test");
-        service.saveLesionmap(lesionmap);
-        verify(service, atLeastOnce()).saveLesionmap(lesionmap);
+    public void purgeLesionmap_shouldDeleteTheLesionmap() throws Exception {
+        //TODO auto-generated
+
+        lesionmap = service.getLesionmap(patient);
+        service.purgeLesionmap(lesionmap);
+        Assert.assertNull(service.getLesionmap(patient));
+
     }
 }

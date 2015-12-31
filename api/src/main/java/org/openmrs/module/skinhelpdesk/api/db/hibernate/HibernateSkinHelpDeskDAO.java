@@ -45,7 +45,6 @@ public class HibernateSkinHelpDeskDAO implements SkinHelpDeskDAO {
 	 */
 	@Override
 	public SkinHelpDesk getLesionmap(Patient patient) {
-		//return (SkinHelpDesk) sessionFactory.getCurrentSession().get(SkinHelpDesk.class, patientId);
         //return (SkinHelpDesk) sessionFactory.getCurrentSession().createQuery("from skinhelpdesk where patientid = " + patientId).uniqueResult();
 		return (SkinHelpDesk) sessionFactory.getCurrentSession().createCriteria(SkinHelpDesk.class).add(Restrictions.eq("patient", patient)).uniqueResult();
 
