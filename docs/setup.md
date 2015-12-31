@@ -28,6 +28,8 @@ instead of rolling back at the end, all you need to do is add
 the @Rollback(false) annotation in your test method. 
 * CHANGE VERSION NUMBER IN ALL pom.xml
 * Author name in config.xml
+* Downgrade fiefox for selenium [[http://askubuntu.com/questions/500644/how-to-downgrade-firefox-from-30-to-28]]
+* Interface testing from mvn mvn -Dtest=LoginTest test
 
 ## ToDo
 * Link from Admin page
