@@ -41,8 +41,8 @@ public class AdminList extends AdministrationSectionExt {
 	public Map<String, String> getLinks() {
 		LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
 		map.put("/module/skinhelpdesk/manage.form", "skinhelpdesk.manage");
-		//Dashboard Link added to admin page
-		map.put("/skinhelpdesk/dashboard.page", "Dashboard");
+		// Dashboard Link added to admin page for testing
+		// map.put("/skinhelpdesk/dashboard.page", "Dashboard");
 		return map;
 	}
 	
