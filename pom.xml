@@ -4,7 +4,7 @@
 
 	<groupId>org.openmrs.module</groupId>
 	<artifactId>skinhelpdesk</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>SkinHelpDesk</name>
 	<description>A Module for marking dermatology lesions on a body map. More at skinhelpdesk.com</description>
@@ -16,14 +16,14 @@
 	</developers>
 	
 	<organization>
-		<name>OpenMRS</name>
-		<url>http://openmrs.org</url>
+		<name>NuChange Informatics</name>
+		<url>http://nuchange.ca</url>
 	</organization>
 
 	<scm>
-		<connection>scm:git:git@github.com:openmrs/openmrs-module-skinhelpdesk.git</connection>
-		<developerConnection>scm:git:git@github.com:openmrs/openmrs-module-skinhelpdesk.git</developerConnection>
-		<url>https://github.com/openmrs/openmrs-module-skinhelpdesk</url>
+		<connection>scm:git:git@github.com:dermatologist/openmrs-module-skinhelpdesk.git</connection>
+		<developerConnection>scm:git:git@github.com:dermatologist/openmrs-module-skinhelpdesk.git</developerConnection>
+		<url>https://github.com/dermatologist/openmrs-module-skinhelpdesk</url>
 	</scm>
 	
 	<properties>
