@@ -27,6 +27,7 @@
 instead of rolling back at the end, all you need to do is add 
 the @Rollback(false) annotation in your test method. 
 * CHANGE VERSION NUMBER IN ALL pom.xml
+* Author name in config.xml
 
 ## ToDo
 * Link from Admin page

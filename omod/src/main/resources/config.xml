@@ -7,7 +7,7 @@
 	<name>${project.parent.name}</name>
 	<version>${project.parent.version}</version>
 	<package>${project.parent.groupId}.${project.parent.artifactId}</package>
-	<author>${module-author}</author>
+	<author>B Eapen - Nuchange.com</author>
 	<description>
 		${project.parent.description}
 	</description>
