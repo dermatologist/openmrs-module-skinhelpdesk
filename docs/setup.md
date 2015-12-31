@@ -22,7 +22,10 @@
   <a href="${ ui.pageLink("orderentryui", "drugOrders", [patient: patient.id, returnUrl: ui.thisUrl()]) }">
 ```
 * java.util.Date and java.lang.String
-
+* executeDataSet("YourTestDataSyncCreateTest.xml");
+* In order to have your Context sensitive tests actually commit to the database 
+instead of rolling back at the end, all you need to do is add 
+the @Rollback(false) annotation in your test method. 
 
 ## ToDo
 * Link from Admin page

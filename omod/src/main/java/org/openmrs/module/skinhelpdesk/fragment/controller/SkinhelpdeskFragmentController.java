@@ -48,32 +48,14 @@ public class SkinhelpdeskFragmentController {
         model.addAttribute("patient", patient);
      }
 
-/*
-    @SuppressWarnings("unchecked")
-    public Object getMap2(UiUtils ui,
-                                       @RequestParam("patientId") Patient patient) {
-        return SimpleObject.fromCollection(patient.getActiveIdentifiers(), ui,
-                "patientIdentifierId", "identifierType", "identifier", "location");
-    }
 
-    @SuppressWarnings("unchecked")
-    public Object getMap(){
-        String imagemap;
-        Object o;
-        if(patient != null) {
-            lesionmap = service.getLesionmap(patient);
-            imagemap = lesionmap.getLesionMap();
-        }else{
-            imagemap = "Not Defined Yet";
-        }
 
-        o = SimpleObject.create("message",imagemap);
-        return o;
-
-    }
-
-*/
-    @SuppressWarnings("unchecked")
+    /**
+     *
+     * @param identifier
+     * @return lesionmap object with message: lesionmap
+     * @should return the object with the message lesionmap
+     */
     public Object getMap(@RequestParam("patientId") int identifier) {
         //patient = patientService.getPatient(identifier);
 
@@ -95,7 +77,15 @@ public class SkinhelpdeskFragmentController {
         return o;
 
     }
-    @SuppressWarnings("unchecked")
+
+    /**
+     *
+     * @param identifier PatientId
+     * @param imagemap as String
+     * @return Object with Message: Added
+     * @should return object with the message added
+     */
+
     public Object putMap(@RequestParam("patientId") int identifier,
                          @RequestParam("lesionmap") String imagemap) {
         Patient patient;
@@ -126,69 +116,5 @@ public class SkinhelpdeskFragmentController {
         return o;
     }
 
-/*
-    @SuppressWarnings("unchecked")
-    public Object getMap2(FragmentConfiguration config,
-                           @SpringBean("patientService") PatientService patientService
-                           ) throws Exception {
-        // unfortunately in OpenMRS 2.1 the coreapps patient page only gives us a patientId for this extension point
-        // (not a patient) but I assume we'll fix this to pass patient, so I'll code defensively
-        config.require("patient|patientId");
-        Object pt = config.getAttribute("patient");
-        if (pt == null) {
-            patient = patientService.getPatient((Integer) config.getAttribute("patientId"));
-        }
-        else {
-            // in case we are passed a PatientDomainWrapper (but this module doesn't know about emrapi)
-            patient = (Patient) (pt instanceof Patient ? pt : PropertyUtils.getProperty(pt, "patient"));
-        }
 
-        String imagemap;
-        Object o;
-        if(patient != null) {
-            lesionmap = service.getLesionmap(patient);
-            imagemap = lesionmap.getLesionMap();
-        }else{
-            imagemap = "Not Defined Yet";
-        }
-
-        o = SimpleObject.create("message",imagemap);
-        return o;
-
-    }
-
-    @SuppressWarnings("unchecked")
-    public Object putMap2(FragmentConfiguration config,
-                         @RequestParam("lesionmap") String imagemap,
-                         @SpringBean("patientService") PatientService patientService
-                         ) throws Exception {
-        // unfortunately in OpenMRS 2.1 the coreapps patient page only gives us a patientId for this extension point
-        // (not a patient) but I assume we'll fix this to pass patient, so I'll code defensively
-        config.require("patient|patientId");
-        Object pt = config.getAttribute("patient");
-        if (pt == null) {
-            patient = patientService.getPatient((Integer) config.getAttribute("patientId"));
-        }
-        else {
-            // in case we are passed a PatientDomainWrapper (but this module doesn't know about emrapi)
-            patient = (Patient) (pt instanceof Patient ? pt : PropertyUtils.getProperty(pt, "patient"));
-        }
-
-        Object o;
-        String m;
-        if(patient != null) {
-
-            lesionmap = service.getLesionmap(patient);
-            lesionmap.setLesionMap(imagemap);
-            service.saveLesionmap(lesionmap);
-            m = "Added";
-        }else{
-            m = "Error";
-        }
-
-        o = SimpleObject.create("message",m);
-        return o;
-
-    }
-*/
 }
