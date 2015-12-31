@@ -1,6 +1,5 @@
 package org.openmrs.module.skinhelpdesk.fragment.controller;
 
-import org.apache.commons.beanutils.ContextClassLoaderLocal;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.openmrs.Patient;
 import org.openmrs.api.PatientService;
@@ -10,11 +9,9 @@ import org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService;
 import org.openmrs.ui.framework.SimpleObject;
 import org.openmrs.ui.framework.annotation.SpringBean;
 import org.openmrs.ui.framework.fragment.*;
-import org.openmrs.ui.framework.UiUtils;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 
 /**
  * Created by beapen on 28/12/15.
@@ -23,10 +20,6 @@ import java.util.List;
  */
 public class SkinhelpdeskFragmentController {
 
-    //private Patient patient;
-    //private SkinHelpDesk lesionmap;
-    //private SkinHelpDeskService service = Context.getService(SkinHelpDeskService.class);
-    //private PatientService patientService = Context.getPatientService();
 
     public void controller(FragmentConfiguration config,
                            @SpringBean("patientService") PatientService patientService,
@@ -43,8 +36,6 @@ public class SkinhelpdeskFragmentController {
             // in case we are passed a PatientDomainWrapper (but this module doesn't know about emrapi)
             patient = (Patient) (pt instanceof Patient ? pt : PropertyUtils.getProperty(pt, "patient"));
         }
-
-
         model.addAttribute("patient", patient);
      }
 
@@ -52,13 +43,11 @@ public class SkinhelpdeskFragmentController {
 
     /**
      *
-     * @param identifier
+     * @param identifier PatientId
      * @return lesionmap object with message: lesionmap
      * @should return the object with the message lesionmap
      */
     public Object getMap(@RequestParam("patientId") int identifier) {
-        //patient = patientService.getPatient(identifier);
-
         String imagemap = "Not Defined Yet";
         Object o;
         Patient patient;
