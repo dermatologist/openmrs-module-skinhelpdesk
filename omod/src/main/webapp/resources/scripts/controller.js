@@ -305,11 +305,11 @@ function addAccessors($scope) {
     fabric.Image.fromURL('/openmrs/ms/uiframework/resource/skinhelpdesk/lesions/' + imageName, function(image) {
 
       image.set({
-        left: coord.left,
-        top: coord.top,
+        left: getRandomInt(50, 200),
+        top: getRandomInt(50, 200),
         angle: getRandomInt(-10, 10)
       })
-      .scale(getRandomNum(minScale, maxScale))
+      .scale(getRandomNum(1, 1.2))  //Changed By Bell
       .setCoords();
 
       canvas.add(image);

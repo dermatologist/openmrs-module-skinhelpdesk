@@ -38,20 +38,23 @@ public interface SkinHelpDeskService extends OpenmrsService {
      *
      * @param patient
      * @return the lesionmap with the given id
+     * @should return the lesionmap for the patient
      */
     @Transactional(readOnly = true)
     SkinHelpDesk getLesionmap(Patient patient);
     /**
      * Saves a new or existing lesionmap.
      *
-     * @param lesionmap the department to save.
-     * @return the saved department.
+     * @param lesionmap the lesionmap to save.
+     * @return the saved lesionmap.
+     * @should return saved lesionmap
      */
     SkinHelpDesk saveLesionmap(SkinHelpDesk lesionmap);
     /**
      * Deletes a lesionmap from the database.
      *
-     * @param lesionmap the department to delete.
+     * @param lesionmap the lesionmap to delete.
+     * @should delete the lesionmap
      */
     void purgeLesionmap(SkinHelpDesk lesionmap);
 }
