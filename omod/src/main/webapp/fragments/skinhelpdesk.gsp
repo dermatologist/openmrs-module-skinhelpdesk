@@ -172,7 +172,7 @@ jQuery(document).ready(function() {
 <script>
   var kitchensink = { };
   var canvas = new fabric.Canvas('canvas');
-  canvas.setBackgroundImage('/openmrs/ms/uiframework/resource/skinhelpdesk/lesions/body.jpeg',        canvas.renderAll.bind(canvas));
+  canvas.setBackgroundImage('../../ms/uiframework/resource/skinhelpdesk/lesions/body.jpeg',        canvas.renderAll.bind(canvas));
 
 </script>
 

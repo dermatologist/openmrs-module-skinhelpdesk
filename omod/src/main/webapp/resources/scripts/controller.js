@@ -302,7 +302,7 @@ function addAccessors($scope) {
   function addImage(imageName, minScale, maxScale) {
     var coord = getRandomLeftTop();
 
-    fabric.Image.fromURL('/openmrs/ms/uiframework/resource/skinhelpdesk/lesions/' + imageName, function(image) {
+    fabric.Image.fromURL('../../ms/uiframework/resource/skinhelpdesk/lesions/' + imageName, function(image) {
 
       image.set({
         left: getRandomInt(50, 200),

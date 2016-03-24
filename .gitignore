@@ -1,3 +1,7 @@
+/api/pom.xml.releaseBackup
+/omod/pom.xml.releaseBackup
+/pom.xml.releaseBackup
+/release.properties
 omod/src/main/webapp/resources/bower_components/
 
 *.class
