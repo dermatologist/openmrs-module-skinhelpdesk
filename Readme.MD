@@ -2,6 +2,8 @@
 
 ![skinhelpdesk LesionMapper<sup>TM</sup>](https://raw.github.com/dermatologist/openmrs-module-skinhelpdesk/master/docs/lm.png)
 
+[![Build Status](https://travis-ci.org/dermatologist/openmrs-module-skinhelpdesk.svg)](https://travis-ci.org/dermatologist/openmrs-module-skinhelpdesk)
+
 ## What is openMRS?
 
 openMRS is a highly customizable EMR platform that can be extended and customized by user-contributed modules. More details here: [http://openmrs.org](http://openmrs.org)
@@ -19,7 +21,8 @@ This is a learning project for me to understand the nuances of the new openmrs u
 I have added my notes to the docs folder. The openMRS wiki is a good reference. I will add a step by step instruction manual in the [prodents wiki](http://wiki.prodents.com). Join us on our ##ehealth IRC channel or [PRO{DENTS}](http://prodents.com) events.
 
 ## How do I install and use this module?
-Watch this video: [https://youtu.be/wy5JPX6AWoM](https://youtu.be/wy5JPX6AWoM)
+- git clone this repository and build project. Upload omod to OpenMRS.
+- Watch this video: [https://youtu.be/wy5JPX6AWoM](https://youtu.be/wy5JPX6AWoM)
 
 ### Credits
 [Fabric.js](http://fabricjs.com) and the [Kitchensink](http://fabricjs.com/kitchensink/) tutorial.
