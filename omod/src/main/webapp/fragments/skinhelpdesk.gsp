@@ -73,9 +73,9 @@ jQuery(document).ready(function() {
 
         <div id="color-opacity-controls" ng-show="canvas.getActiveObject()">
             <label for="opacity">Opacity: </label>
-            <input value="100" type="range" bind-value-to="opacity">
+            <input id="opacity" value="100" type="range" bind-value-to="opacity">
             <label for="color" style="margin-left:10px">Color: </label>
-            <input type="color" style="width:40px" bind-value-to="fill">
+            <input id="color" type="color" style="width:40px" bind-value-to="fill">
         </div>
 
         <div id="text-wrapper" style="margin-top: 10px" ng-show="getText()">

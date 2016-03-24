@@ -68,3 +68,8 @@ EMployee
       </set>
 ```      
       ** Additional Table required in liquibase 
+      
+## Release
+* mvn release:prepare
+* mvn release:rollback
+* mvn release:perform
