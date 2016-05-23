@@ -18,7 +18,7 @@ target
 
 omod/src/main/compass/sass-external
 
-*.css
+#css
 omod/src/main/webapp/resources/styles/admin/*.css
 omod/src/main/webapp/resources/styles/formentry/*.css
 omod/src/main/webapp/resources/styles/overview/*.css

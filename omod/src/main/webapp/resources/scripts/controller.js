@@ -10,6 +10,7 @@ function getActiveStyle(styleName, object) {
 
 function addWatermark() {
   //code
+  /*
      var lm_wm = 'Created with LesionMapper(TM): http://skinhelpdesk.com ';
      canvas.add(new fabric.IText(lm_wm, {
       fontFamily: 'Verdana',
@@ -18,7 +19,7 @@ function addWatermark() {
       fillStyle: 'yellow',
       top: 0 ,
     }));
-    
+  */  
 
 
 }
