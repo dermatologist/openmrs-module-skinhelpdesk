@@ -62,13 +62,13 @@ jQuery(document).ready(function() {
 
 </script>
 
-
-
-
 <div ng-app="kitchensink">
    <div style="position:relative;width:600px;float:left;" id="canvas-wrapper" ng-controller="CanvasControls">
-
-            <canvas id="canvas" width="490" height="415"></canvas>
+<div class="info-header">
+        <i class="icon-camera-retro"></i>
+        <h3>LesionMap</h3>
+</div>
+            <canvas id="canvas" width="600" height="500"></canvas>
 
 
         <div id="color-opacity-controls" ng-show="canvas.getActiveObject()">
@@ -112,8 +112,10 @@ jQuery(document).ready(function() {
                             <button type="button" id ="ulcer" class="btn-xlarge" ng-click="addImage16()">Ulcer</button>
                             <button type="button" id ="scar" class="btn-xlarge" ng-click="addImage17()">Scar</button>
                             <button type="button" id ="purpura" class="btn-xlarge" ng-click="addImage18()">Purpura</button>
+                            <!--
                             <button type="button" id ="user1" class="btn-xlarge" ng-click="addImageUser1()">User1</button>
                             <button type="button" id ="user2" class="btn-xlarge" ng-click="addImageUser2()">User2</button>
+                            -->
                             <br>
                                 <button type="button" id ="i_updown" class="btn-xlarge" ng-click="addImage20()">Up/Down</button>
                                 <button type="button" id ="i_koebner" class="btn-xlarge" ng-click="addImage21()">Koebner</button>
@@ -130,20 +132,16 @@ jQuery(document).ready(function() {
                 	<button class="button [secondary success alert]" ng-click="confirmClear()">Clear canvas</button>
 
                     <div id="FormDisplay" ng-click="loadSVG()"></div>
-        </div>
+        
 
-
-
-
-
-	<div id="drawing-mode-wrapper">
+	       <div id="drawing-mode-wrapper">
         	<button id="drawing-mode" class="button"
           		ng-click="setFreeDrawingMode(!getFreeDrawingMode())"
           		ng-class="{'btn-inverse': getFreeDrawingMode()}">
           			{[ getFreeDrawingMode() ? 'Exit free drawing mode' : 'Enter free drawing mode' ]}
         	</button>
 
-		<div id="drawing-mode-options" ng-show="getFreeDrawingMode()">
+		    <div id="drawing-mode-options" ng-show="getFreeDrawingMode()">
                 	<label for="drawing-mode-selector">Mode:</label>
                                             <select id="drawing-mode-selector" bind-value-to="drawingMode">
                                                 <option>Pencil</option>
@@ -162,8 +160,11 @@ jQuery(document).ready(function() {
 			<input type="color" value="#005E7A" bind-value-to="drawingLineColor"><br>
 			<label for="drawing-shadow-width">Line shadow width:</label>
 			<input type="range" value="0" min="0" max="50" bind-value-to="drawingLineShadowWidth">
-                </div><!-- DRAWING MODE OPTION-->
-    </div><!-- DRAWING MODE WRAPPER-->
+            </div><!-- DRAWING MODE OPTION-->
+            </div><!-- DRAWING MODE WRAPPER-->
+
+        </div>
+
    	<p><div id="responds"></div></p>
 
    </div> <!-- canvas-wrapper -->
