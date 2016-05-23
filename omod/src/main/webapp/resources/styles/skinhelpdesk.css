@@ -1,0 +1,69 @@
+
+
+
+#papule{background: #628d28 url('../lesions/papule.jpg') no-repeat;}
+#hypopigmented{background: #628d28 url('../lesions/hypopigmented.jpg') no-repeat;}
+#hyperpigmented{background: #628d28 url('../lesions/hyperpigmented.jpg') no-repeat;}
+#nodule{background: #628d28 url('../lesions/nodule.jpg') no-repeat;}
+#plaque{background: #628d28 url('../lesions/plaque.jpg') no-repeat;}
+#vesicle{background: #628d28 url('../lesions/vesicle.jpg') no-repeat;}
+#bulla{background: #628d28 url('../lesions/bulla.jpg') no-repeat;}
+#pustule{background: #628d28 url('../lesions/pustule.jpg') no-repeat;}
+#telangiectasia{background: #628d28 url('../lesions/telangiectasia.jpg') no-repeat;}
+#scaling{background: #628d28 url('../lesions/scaling.jpg') no-repeat;}
+#crusting{background: #628d28 url('../lesions/crusting.jpg') no-repeat;}
+#atrophic{background: #628d28 url('../lesions/atrophic.jpg') no-repeat;}
+#lichenification{background: #628d28 url('../lesions/lichenification.jpg') no-repeat;}
+#erosion{background: #628d28 url('../lesions/erosion.jpg') no-repeat;}
+#excoriation{background: #628d28 url('../lesions/excoriation.jpg') no-repeat;}
+#fissure{background: #628d28 url('../lesions/fissure.jpg') no-repeat;}
+#ulcer{background: #628d28 url('../lesions/ulcer.jpg') no-repeat;}
+#scar{background: #628d28 url('../lesions/scar.jpg') no-repeat;}
+#purpura{background: #628d28 url('../lesions/purpura.jpg') no-repeat;}
+#user1{background: #628d28 url('../lesions/user1.jpg') no-repeat;}
+#user2{background: #628d28 url('../lesions/user2.jpg') no-repeat;}
+#i_updown{background: #628d28 url('../lesions/i_updown.jpg') no-repeat;}
+#i_koebner{background: #628d28 url('../lesions/i_koebner.jpg') no-repeat;}
+#i_progress{background: #628d28 url('../lesions/i_progress.jpg') no-repeat;}
+#i_photosensitive{background: #628d28 url('../lesions/i_photosensitive.jpg') no-repeat;}
+#i_centrifugal{background: #628d28 url('../lesions/i_centrifugal.jpg') no-repeat;}
+#i_started{background: #628d28 url('../lesions/i_started.jpg') no-repeat;}
+#i_central{background: #628d28 url('../lesions/i_central.jpg') no-repeat;}
+
+.btn-xlarge {
+    padding: 5px 5px;
+    font-size: 0px;
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+    height: 75px;
+    width: 75px;
+}
+
+
+#image_lesion {
+    position:fixed;
+    top:200px;
+    left:60%;
+}
+#image_secondary {
+    position:fixed;
+    top:200px;
+    left:60%;
+}
+#image_colour {
+    position:fixed;
+    top:200px;
+    left:60%;
+}
+#image_distribution {
+    position:fixed;
+    top:200px;
+    left:60%;
+}
+#image_border {
+    position:fixed;
+    top:200px;
+    left:60%;
+}
