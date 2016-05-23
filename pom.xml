@@ -4,7 +4,7 @@
 
 	<groupId>org.openmrs.module</groupId>
 	<artifactId>skinhelpdesk</artifactId>
-	<version>1.4.1-SNAPSHOT</version>
+	<version>1.4.1</version>
 	<packaging>pom</packaging>
 	<name>SkinHelpDesk</name>
 	<description>A Module for marking dermatology lesions on a body map. More at skinhelpdesk.com</description>
