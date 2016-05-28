@@ -4,7 +4,11 @@
 <% ui.includeCss("skinhelpdesk", "kitchensink.css") %>
 
 <!-- Include Custom Scripts -->
-<% ui.includeJavascript("skinhelpdesk", "angular.min.js") %>
+<%
+    ui.includeJavascript("uicommons", "angular.js")
+    ui.includeJavascript("uicommons", "ngDialog/ngDialog.js")
+    ui.includeCss("uicommons", "ngDialog/ngDialog.min.css")
+%>
 <% ui.includeJavascript("skinhelpdesk", "fabric.js") %>
 <% ui.includeJavascript("skinhelpdesk", "paster.js") %>
 <% ui.includeJavascript("skinhelpdesk", "font_definitions.js") %>
@@ -32,10 +36,12 @@ jQuery(document).ready(function() {
         var patientid = ${ patient.id };
         var imagemap = getLocation();
         jQuery.post('${ ui.actionLink("putMap") }', { returnFormat: 'json', patientId: patientid, lesionmap: imagemap },
-                function(data) {
-                    response = data.message;
-                    jQuery("#responds").empty();
-                    jQuery("#responds").append(response);
+                function (data) {
+                    if (data.indexOf("${MESSAGE_SUCCESS}") >= 0) {
+                        jq().toastmessage('showSuccessToast', "Image Saved.");
+                    } else {
+                        jq().toastmessage('showErrorToast', "Error. Please try again after page refresh");
+                    }
                 })
                 .error(function() {
                     notifyError("Programmer error: delete identifier failed");

@@ -8,8 +8,8 @@ import org.openmrs.module.skinhelpdesk.SkinHelpDesk;
 import org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService;
 import org.openmrs.ui.framework.SimpleObject;
 import org.openmrs.ui.framework.annotation.SpringBean;
-import org.openmrs.ui.framework.fragment.*;
-
+import org.openmrs.ui.framework.fragment.FragmentConfiguration;
+import org.openmrs.ui.framework.fragment.FragmentModel;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Ref: https://github.com/openmrs/openmrs-module-orderentryui/blob/master/omod/src/main/java/org/openmrs/module/orderentryui/fragment/controller/patientdashboard/ActiveDrugOrdersFragmentController.java
  */
 public class SkinhelpdeskFragmentController {
+    public static final String MESSAGE_SUCCESS = "success";
+    public static final String MESSAGE_ERROR = "error";
 
 
     public void controller(FragmentConfiguration config,
@@ -37,7 +39,9 @@ public class SkinhelpdeskFragmentController {
             patient = (Patient) (pt instanceof Patient ? pt : PropertyUtils.getProperty(pt, "patient"));
         }
         model.addAttribute("patient", patient);
-     }
+        model.addAttribute("MESSAGE_SUCCESS", MESSAGE_SUCCESS);
+        model.addAttribute("MESSAGE_ERROR", MESSAGE_ERROR);
+    }
 
 
 
@@ -48,7 +52,7 @@ public class SkinhelpdeskFragmentController {
      * @should return the object with the message lesionmap
      */
     public Object getMap(@RequestParam("patientId") int identifier) {
-        String imagemap = "Not Defined Yet";
+        String imagemap = MESSAGE_ERROR;
         Object o;
         Patient patient;
         SkinHelpDesk lesionmap;
@@ -96,9 +100,9 @@ public class SkinhelpdeskFragmentController {
                 lm.setLesionMap(imagemap);
                 service.saveLesionmap(lm);
             }
-            m = "Added";
+            m = MESSAGE_SUCCESS;
         }else{
-            m = "Error";
+            m = MESSAGE_ERROR;
         }
 
         o = SimpleObject.create("message",m);
