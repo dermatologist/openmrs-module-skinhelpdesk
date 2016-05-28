@@ -21,7 +21,7 @@ This is a learning project for me to understand the nuances of the new openmrs u
 I have added my notes to the docs folder. The openMRS wiki is a good reference. I will add a step by step instruction manual in the [prodents wiki](http://wiki.prodents.com). Join us on our ##ehealth IRC channel or [PRO{DENTS}](http://prodents.com) events.
 
 ## How do I install and use this module?
-- [Download latest release](https://github.com/dermatologist/openmrs-module-skinhelpdesk/releases). Upload omod to OpenMRS.
+- [Download latest release](https://modules.openmrs.org/#/show/255/dermatology-lesionmapper). Upload omod to OpenMRS.
 - Watch this video: [https://youtu.be/wy5JPX6AWoM](https://youtu.be/wy5JPX6AWoM)
 
 ### Credits
