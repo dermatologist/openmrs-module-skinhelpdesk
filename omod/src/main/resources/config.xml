@@ -11,7 +11,7 @@
 	<description>
 		${project.parent.description}
 	</description>
-	<updateURL>https://modules.openmrs.org/modules/download/dermatology-lesionmapper/update.rdf</updateURL>
+	<updateURL>http://nuchange.ca/openmrs/skinhelpdesk/update.rdf</updateURL>
 	<require_version>${openMRSVersion}</require_version>
 	<!-- / Module Properties -->
 
