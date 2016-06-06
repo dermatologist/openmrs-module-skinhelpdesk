@@ -50,6 +50,31 @@ jQuery(document).ready(function() {
     });
 
 
+    jQuery("#FormReset").click(function (e) {
+
+        e.preventDefault();
+        var result = confirm("Want to reset? All data on canvas for this patient will be lost!")
+        if (result) {
+            var patientid = ${ patient.id };
+            var imagemap = "-"; //Blank Imagemap
+            jQuery.post('${ ui.actionLink("putMap") }', {
+                        returnFormat: 'json',
+                        patientId: patientid,
+                        lesionmap: imagemap
+                    },
+                    function (data) {
+                        if (data.indexOf("${MESSAGE_SUCCESS}") >= 0) {
+                            jq().toastmessage('showSuccessToast', "Image Reset.");
+                            location.reload();
+                        } else {
+                            jq().toastmessage('showErrorToast', "Error. Please try again after page refresh");
+                        }
+                    })
+                    .error(function () {
+                        notifyError("Programmer error: delete identifier failed");
+                    })
+        }
+    });
 
     jQuery("#FormLoad").click(function (e) {
 
@@ -132,7 +157,8 @@ jQuery(document).ready(function() {
                                 <button type="button" id ="i_central" class="btn-xlarge" ng-click="addImage26()">Central</button>
                 </p>
 
-                     <button type="button" class="button" id="FormLoad">Load</button>
+            <div id="FormLoad"></div>
+            <button type="button" class="button" id="FormReset">Reset</button>
                     <button class="button" id="FormSave" ng-click="rasterizeJSON()">SAVE</button>
                     <button class="button" ng-click="addText()">Add text</button>
                 	<button class="button [secondary success alert]" ng-click="confirmClear()">Clear canvas</button>
