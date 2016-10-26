@@ -8,7 +8,7 @@ openMRS is a highly customizable EMR platform that can be extended and customize
 
 ## What is openmrs-module-skinhelpdesk?
 
-This is a module for dermatologists to doodle lesions on a body image during consultations, a typical workflow pattern for us. The theortical basis for LesionMapper is pending publication. Read an informal introduction on my blog [NuChange.ca](http://nuchange.ca/2014/08/lesionmapper-pictographic-lesion-encoder-for-dermatology.html)
+This is a module for dermatologists to doodle lesions on a body image during consultations, a typical workflow pattern for us. The theortical basis for LesionMapper is pending publication. Read an informal introduction on my blog [Nuchange.ca](http://nuchange.ca/2014/08/lesionmapper-pictographic-lesion-encoder-for-dermatology.html)
 
 ## What is the motivation?
 
