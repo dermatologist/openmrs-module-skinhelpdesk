@@ -23,4 +23,4 @@ Watch this video: [https://youtu.be/wy5JPX6AWoM](https://youtu.be/wy5JPX6AWoM)
 
 ### Credits
 [Fabric.js](http://fabricjs.com) and the [Kitchensink](http://fabricjs.com/kitchensink/) tutorial.
-The [NuChange Informatics](http://nuchange.ca) team
+The [NuChange Informatics](http://nuchange.ca) team.
