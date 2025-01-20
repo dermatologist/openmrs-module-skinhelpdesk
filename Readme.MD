@@ -10,20 +10,27 @@ openMRS is a highly customizable EMR platform that can be extended and customize
 
 ## What is openmrs-module-skinhelpdesk?
 
-This is a module for dermatologists to doodle lesions on a body image during consultations, a typical workflow pattern for us. The theortical basis for LesionMapper is pending publication. Read an informal introduction on my blog [NuChange.ca](http://nuchange.ca/2014/08/lesionmapper-pictographic-lesion-encoder-for-dermatology.html)
-
-## What is the motivation?
-
-This is a learning project for me to understand the nuances of the new openmrs ui framework. This project may be useful for other newbies like me as well. I have ported the interface I created for my patient portal [http://skinhelpdesk.com](http://skinhelpdesk.com) to openMRS. 
-
-## How do I use this as a openMRS 2.x module learning project?
-
-I have added my notes to the docs folder. The openMRS wiki is a good reference. I will add a step by step instruction manual in the [prodents wiki](http://wiki.prodents.com). Join us on our ##ehealth IRC channel or [PRO{DENTS}](http://prodents.com) events.
+This module allows dermatologists to sketch lesions on a body wireframe during consultations, seamlessly integrating into our standard workflow. Read the [publication](https://derma.jmir.org/2020/1/e18149).
 
 ## How do I install and use this module?
 - [Download latest release](https://modules.openmrs.org/#/show/255/dermatology-lesionmapper). Upload omod to OpenMRS.
 - Watch this video: [https://youtu.be/wy5JPX6AWoM](https://youtu.be/wy5JPX6AWoM)
 
-### Credits
+## Credits
 [Fabric.js](http://fabricjs.com) and the [Kitchensink](http://fabricjs.com/kitchensink/) tutorial.
-The [NuChange Informatics](http://nuchange.ca) team
+
+## Citation
+```
+@article{eapenLesionMapMethodTool2020,
+  title = {{{LesionMap}}: {{A Method}} and {{Tool}} for the {{Semantic Annotation}} of {{Dermatological Lesions}} for {{Documentation}} and {{Machine Learning}}},
+  shorttitle = {{{LesionMap}}},
+  author = {Eapen, Bell Raj and Archer, Norm and Sartipi, Kamran},
+  year = {2020},
+  month = apr,
+  journal = {JMIR Dermatology},
+  volume = {3},
+  number = {1},
+  pages = {e18149},
+  doi = {10.2196/18149},
+}
+```
